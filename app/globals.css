@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+@theme {
+  /* Ini cara yang benar untuk mendaftarkan nama class warna kustom di Tailwind v4 */
+  --color-brand-cream: #FDFBF7;
+  --color-brand-brown: #5C4033;
+  --color-brand-sage: #9CAF88;
+  --color-brand-sand: #E6DCCB;
+}
+
+/* Kita definisikan juga agar warnanya bisa dipakai di mana-mana */
+@layer base {
+  :root {
+    --brand-cream: #FDFBF7;
+    --brand-brown: #5C4033;
+    --brand-sage: #9CAF88;
+    --brand-sand: #E6DCCB;
+  }
+}

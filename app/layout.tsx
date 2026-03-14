@@ -20,10 +20,10 @@ export default function RootLayout({
         {/* Seluruh website dibungkus dengan CartProvider */}
         <CartProvider>
           <Navbar />
-          <main className="flex-grow">
+          <main className="min-h-screen">
             {children}
           </main>
-          <Footer />
+          <Footer /> {/* Ini tambahan barunya */}
         </CartProvider>
       </body>
     </html>

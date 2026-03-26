@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
 import { CartProvider } from "./context/CartContext"; // Import otaknya
+import { Toaster } from "react-hot-toast";
 
 export const metadata: Metadata = {
   title: "Ini Rasa | Toko Roti & Kue Premium",
@@ -20,10 +21,22 @@ export default function RootLayout({
         {/* Seluruh website dibungkus dengan CartProvider */}
         <CartProvider>
           <Navbar />
+          {/* Ini kode baru untuk memunculkan notifikasi elegan */}
+          <Toaster 
+            position="bottom-center" 
+            toastOptions={{
+              style: {
+                background: '#4a3b32', // Warna brand-brown
+                color: '#fff',
+                borderRadius: '100px',
+                fontWeight: 'bold',
+              },
+            }} 
+          />
           <main className="min-h-screen">
             {children}
           </main>
-          <Footer /> {/* Ini tambahan barunya */}
+          <Footer />
         </CartProvider>
       </body>
     </html>

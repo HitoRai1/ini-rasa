@@ -1,11 +1,19 @@
 "use client";
 
 import Link from "next/link";
-import { ArrowLeft, Trash2 } from "lucide-react";
+import { ArrowLeft, Trash2, Loader2 } from "lucide-react";
 import { useCart } from "../../app/context/CartContext";
+import { useState, useEffect } from "react";
 
 export default function CartPage() {
   const { cart, cartCount, increaseQuantity, decreaseQuantity, removeFromCart } = useCart();
+
+  // Tambahan pengaman agar terhindar dari error layar putih / hydration
+  const [isMounted, setIsMounted] = useState(false);
+
+  useEffect(() => {
+    setIsMounted(true);
+  }, []);
 
   // Fungsi format Rupiah
   const formatRupiah = (angka: number) => {
@@ -16,15 +24,24 @@ export default function CartPage() {
     }).format(angka);
   };
 
-  // Menghitung total harga semua barang di keranjang
-  const totalHarga = cart.reduce((total, item) => total + (item.price * item.quantity), 0);
+  // Menghitung total harga semua barang di keranjang (ditambah pelampung pengaman ?.)
+  const totalHarga = cart?.reduce((total, item) => total + (item.price * item.quantity), 0) || 0;
 
   // Membuat format pesan otomatis untuk dikirim ke WhatsApp
-  const daftarPesanan = cart.map(item => `- ${item.name} (${item.quantity}x)`).join('%0A');
+  const daftarPesanan = cart?.map(item => `- ${item.name} (${item.quantity}x)`).join('%0A') || '';
   const pesanWhatsApp = `Halo Ini Rasa! Saya mau pesan:%0A${daftarPesanan}%0A%0ATotal: ${formatRupiah(totalHarga)}%0A%0AMohon info pembayarannya ya.`;
   
-  // Link menuju WA dengan nomor yang kamu pasang di footer (+6287841584445)
+  // Link menuju WA dengan nomor baru (0851-8607-4311)
   const linkWA = `https://wa.me/6285186074311?text=${pesanWhatsApp}`;
+
+  // Tampilan loading sebentar agar memori keranjang selesai dibaca
+  if (!isMounted) {
+    return (
+      <div className="min-h-screen bg-brand-cream flex items-center justify-center">
+        <Loader2 className="w-10 h-10 text-brand-brown animate-spin" />
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-brand-cream py-12">

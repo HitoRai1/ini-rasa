@@ -1,6 +1,7 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
+import toast from "react-hot-toast";
 
 type CartItem = {
   id: number;
@@ -34,7 +35,7 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prevCart, { ...product, quantity: 1 }];
     });
-    alert(`${product.name} berhasil ditambahkan ke keranjang! 🛒`);
+    toast.success(`${product.name} berhasil ditambahkan!`);
   };
 
   // Fungsi Tambah (+)

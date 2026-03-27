@@ -5,10 +5,11 @@ import Footer from "../components/Footer";
 import { CartProvider } from "./context/CartContext"; // Import otaknya
 import { Toaster } from "react-hot-toast";
 
-export const metadata: Metadata = {
-  title: "Ini Rasa | Toko Roti & Kue Premium",
-  description: "Katalog digital Ini Rasa",
-};
+export const metadata = {
+  metadataBase: new URL('https://inirasa.biz.id'), // Tambahkan ini!
+  title: 'Ini Rasa | Bakery & Hampers Premium Jakarta',
+  description: 'Menyajikan berbagai pilihan signature cake, pastry, dan hampers elegan dengan bahan premium Wisjman.',
+}
 
 export default function RootLayout({
   children,

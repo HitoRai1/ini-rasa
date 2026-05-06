@@ -45,10 +45,10 @@ export default function Footer() {
               Menghadirkan sajian premium yang dibuat dengan tangan, cinta, dan bahan terbaik. Sempurna untuk menemani perayaan bermaknamu.
             </p>
             <div className="flex gap-4">
-              <a href="#" className="w-10 h-10 rounded-full bg-brand-cream/10 flex items-center justify-center hover:bg-brand-sage hover:text-brand-brown transition" title="Instagram">
+              <a href="https://www.instagram.com/inirasa" target="_blank" rel="noopener noreferrer" className="w-10 h-10 rounded-full bg-brand-cream/10 flex items-center justify-center hover:bg-brand-sage hover:text-brand-brown transition" title="Instagram">
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="w-10 h-10 rounded-full bg-brand-cream/10 flex items-center justify-center hover:bg-brand-sage hover:text-brand-brown transition" title="Email">
+              <a href="mailto:inirasabakery@gmail.com" className="w-10 h-10 rounded-full bg-brand-cream/10 flex items-center justify-center hover:bg-brand-sage hover:text-brand-brown transition" title="Email">
                 <Mail className="w-5 h-5" />
               </a>
             </div>
@@ -71,8 +71,8 @@ export default function Footer() {
             <h3 className="font-bold text-white mb-6 uppercase tracking-widest text-sm">Dukungan</h3>
             <ul className="space-y-4">
               <li><Link href="/terms" className="text-brand-cream/70 hover:text-brand-sage transition flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Syarat & Ketentuan</Link></li>
-              <li><Link href="#" className="text-brand-cream/70 hover:text-brand-sage transition flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Kebijakan Privasi</Link></li>
-              <li><Link href="#" className="text-brand-cream/70 hover:text-brand-sage transition flex items-center gap-2"><ArrowRight className="w-3 h-3" /> FAQ</Link></li>
+              <li><Link href="/kebijakan-privasi" className="text-brand-cream/70 hover:text-brand-sage transition flex items-center gap-2"><ArrowRight className="w-3 h-3" /> Kebijakan Privasi</Link></li>
+              <li><Link href="/faq" className="text-brand-cream/70 hover:text-brand-sage transition flex items-center gap-2"><ArrowRight className="w-3 h-3" /> FAQ</Link></li>
             </ul>
           </div>
 
@@ -82,7 +82,7 @@ export default function Footer() {
             <ul className="space-y-5">
               <li className="flex items-start gap-3 text-brand-cream/70">
                 <MapPin className="w-5 h-5 shrink-0 text-brand-sage mt-0.5" />
-                <span className="text-sm leading-relaxed">Jl. Kembangan Raya No. 88<br/>Kembangan, Jakarta Barat 11610</span>
+                <span className="text-sm leading-relaxed">Apartemen Menara Latumenten, 1,<br/>RT.1/RW.1, Jelambar Baru,<br/>Kec. Grogol Petamburan,<br/>Kota Jakarta Barat 11460</span>
               </li>
               <li className="flex items-center gap-3 text-brand-cream/70">
                 <Phone className="w-5 h-5 shrink-0 text-brand-sage" />

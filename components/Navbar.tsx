@@ -2,14 +2,18 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, Home, Store, BookOpen, Info, Menu, X } from "lucide-react";
+import { ShoppingCart, Home, Store, BookOpen, Info, Menu, X, User, Heart } from "lucide-react";
 import Logo from "./Logo"; 
 import { useCart } from "../app/context/CartContext";
+import { useAuth } from "../app/context/AuthContext";
+import { useWishlist } from "../app/context/WishlistContext";
 import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
   const { cartCount } = useCart() || { cartCount: 0 };
+  const { user, isLoading } = useAuth();
+  const { wishlistCount } = useWishlist() || { wishlistCount: 0 };
   
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isMounted, setIsMounted] = useState(false);
@@ -55,16 +59,40 @@ export default function Navbar() {
             })}
           </div>
 
-          {/* KANAN: Ikon Keranjang (Ikon Orang Sudah Dihapus) */}
-          <div className="flex items-center gap-4">
+          {/* KANAN: Ikon Akun & Keranjang */}
+          <div className="flex items-center gap-2 sm:gap-3">
+            
+            {!isLoading && (
+              <Link
+                href={user ? "/akun" : "/login"}
+                className="p-2 text-brand-brown hover:text-brand-sage transition-colors bg-brand-sand/10 hover:bg-brand-sand/20 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+                title={user ? "Akun Saya" : "Masuk"}
+              >
+                <User className="w-5 h-5 sm:w-6 sm:h-6" />
+              </Link>
+            )}
+
+            <Link
+              href="/wishlist"
+              className="relative p-2 text-brand-brown hover:text-brand-sage transition-colors bg-brand-sand/10 hover:bg-brand-sand/20 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
+              title="Favorit"
+            >
+              <Heart className="w-5 h-5 sm:w-6 sm:h-6" />
+              {isMounted && wishlistCount > 0 && (
+                <span className="absolute top-0 right-0 sm:top-1 sm:right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center rounded-full border-2 border-[#faf9f7]">
+                  {wishlistCount}
+                </span>
+              )}
+            </Link>
+
             <Link
               href="/cart"
-              className="relative p-2 text-brand-brown hover:text-brand-sage transition-colors bg-brand-sand/10 hover:bg-brand-sand/20 rounded-full w-12 h-12 flex items-center justify-center"
+              className="relative p-2 text-brand-brown hover:text-brand-sage transition-colors bg-brand-sand/10 hover:bg-brand-sand/20 rounded-full w-10 h-10 sm:w-12 sm:h-12 flex items-center justify-center"
             >
-              <ShoppingCart className="w-6 h-6" />
+              <ShoppingCart className="w-5 h-5 sm:w-6 sm:h-6" />
               {/* Notifikasi jumlah barang (muncul jika ada barang) */}
               {isMounted && cartCount > 0 && (
-                <span className="absolute top-1 right-1 bg-red-500 text-white text-[10px] font-bold w-5 h-5 flex items-center justify-center rounded-full border-2 border-[#faf9f7]">
+                <span className="absolute top-0 right-0 sm:top-1 sm:right-1 bg-red-500 text-white text-[10px] font-bold w-4 h-4 sm:w-5 sm:h-5 flex items-center justify-center rounded-full border-2 border-[#faf9f7]">
                   {cartCount}
                 </span>
               )}
@@ -72,7 +100,7 @@ export default function Navbar() {
 
             {/* Tombol Hamburger Menu untuk Tampilan HP */}
             <button
-              className="md:hidden p-2 text-brand-brown bg-brand-sand/10 rounded-full w-12 h-12 flex items-center justify-center hover:bg-brand-sand/20 transition"
+              className="md:hidden p-2 text-brand-brown bg-brand-sand/10 rounded-full w-10 h-10 flex items-center justify-center hover:bg-brand-sand/20 transition"
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
             >
               {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}

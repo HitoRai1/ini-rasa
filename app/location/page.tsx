@@ -38,9 +38,10 @@ export default function LocationPage() {
                 <div>
                   <h3 className="font-bold text-lg mb-2 text-white">Alamat</h3>
                   <p className="text-brand-cream/80 leading-relaxed">
-                    Jl. Kembangan Raya No. 88<br />
-                    Kembangan, Jakarta Barat<br />
-                    DKI Jakarta 11610
+                    Apartemen Menara Latumenten, 1,<br />
+                    RT.1/RW.1, Jelambar Baru,<br />
+                    Kec. Grogol Petamburan,<br />
+                    Kota Jakarta Barat 11460
                   </p>
                 </div>
               </div>
@@ -65,7 +66,7 @@ export default function LocationPage() {
                 <div>
                   <h3 className="font-bold text-lg mb-2 text-white">Hubungi Kami</h3>
                   <p className="text-brand-cream/80">WA: 0851-8607-4311</p>
-                  <p className="text-brand-cream/80">Email: halo@inirasa.com</p>
+                  <p className="text-brand-cream/80">Email: inirasabakery@gmail.com</p>
                 </div>
               </div>
             </div>
@@ -74,7 +75,7 @@ export default function LocationPage() {
           {/* Bagian Kanan: Google Maps Interaktif */}
           <div className="w-full lg:w-2/3 h-[400px] lg:h-auto min-h-[400px] bg-brand-sand/20 relative">
              <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.502805178619!2d106.74516331476902!3d-6.196531995513904!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f71c43f7a817%3A0x8e8bb8864f1c1103!2sKembangan%20Sel.%2C%20Kec.%20Kembangan%2C%20Kota%20Jakarta%20Barat%2C%20Daerah%20Khusus%20Ibukota%20Jakarta!5e0!3m2!1sen!2sid!4v1682312345678!5m2!1sen!2sid"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.4660523!2d106.7954!3d-6.1515!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69f6e000000001%3A0x0!2sApartemen+Menara+Latumenten%2C+Jelambar+Baru%2C+Grogol+Petamburan%2C+Jakarta+Barat!5e0!3m2!1sid!2sid!4v1682312345678!5m2!1sid!2sid"
               width="100%"
               height="100%"
               style={{ border: 0 }}

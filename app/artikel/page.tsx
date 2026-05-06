@@ -1,49 +1,7 @@
 import Link from "next/link";
 import { Calendar, ArrowRight, Tag } from "lucide-react";
 
-// Data artikel dengan link yang SUDAH AKTIF SEMUA
-const articles = [
-  {
-    id: 1,
-    title: "Cara Menyimpan Kue Tart Agar Tetap Lembut Berhari-hari",
-    link: "/artikel/cara-menyimpan-kue-tart", 
-    excerpt: "Pernahkah kamu membeli kue tart yang lezat, namun teksturnya menjadi keras dan kering setelah disimpan di kulkas? Kunci utamanya ada pada cara penyimpanan yang tepat agar kelembapannya terjaga...",
-    date: "14 Maret 2026",
-    category: "Tips & Trik",
-    image: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/Strawberry%20Shortcake.webp",
-    featured: true,
-  },
-  {
-    id: 2,
-    title: "Mengenal Perbedaan Mentega Wisjman dan Margarin Biasa",
-    link: "/artikel/mengenal-mentega-wisjman", 
-    excerpt: "Banyak yang bertanya, apa rahasia di balik tekstur lumer Nastar Ini Rasa? Jawabannya ada pada pemilihan bahan baku yang tidak kenal kompromi.",
-    date: "10 Maret 2026",
-    category: "Bahan Premium",
-    image: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/Nastar%20Wisjman%20Spesial.webp",
-    featured: false,
-  },
-  {
-    id: 3,
-    title: "5 Alasan Mengapa Hampers Adalah Hadiah Terbaik untuk Kolega",
-    link: "/artikel/5-alasan-hampers-terbaik",
-    excerpt: "Bukan sekadar bingkisan, hampers adalah representasi dari apresiasi dan rasa hormat. Temukan alasan mengapa hampers selalu menjadi pilihan utama di hari raya.",
-    date: "05 Maret 2026",
-    category: "Inspirasi",
-    image: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/medina%20royal.webp",
-    featured: false,
-  },
-  {
-    id: 4,
-    title: "Di Balik Dapur Ini Rasa: Dedikasi Menjaga Kualitas",
-    link: "/artikel/di-balik-dapur-ini-rasa",
-    excerpt: "Mengintip rutinitas pagi para baker kami. Dari menimbang tepung hingga memanggang adonan pertama, semuanya dilakukan dengan cinta dan ketelitian.",
-    date: "28 Februari 2026",
-    category: "Cerita Kami",
-    image: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/trio%20cake.webp",
-    featured: false,
-  }
-];
+import { articles } from "../lib/articles";
 
 export default function ArtikelPage() {
   const featuredArticle = articles.find(a => a.featured);

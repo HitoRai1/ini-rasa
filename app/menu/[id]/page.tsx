@@ -3,6 +3,7 @@ import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 import AddToCartBigButton from "../../../components/AddToCartBigButton";
 import ImageModal from "../../../components/ImageModal";
+import type { Metadata } from "next";
 
 const imageUrls = [
   "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/shafa.webp", 
@@ -12,6 +13,37 @@ const imageUrls = [
   "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/tiramisu.webp", 
   "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/dubai%20cokelat.webp"  
 ];
+
+// --- SEO: Metadata Dinamis Per Produk ---
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
+  const { data: product } = await supabase
+    .from("products").select("name, description, image_url, category").eq("id", id).single();
+
+  if (!product) return { title: 'Produk Tidak Ditemukan | Ini Rasa' };
+
+  const imgIndex = (parseInt(id) - 1) % imageUrls.length;
+  const image = product.image_url || imageUrls[imgIndex];
+
+  return {
+    title: `${product.name} | Ini Rasa Bakery`,
+    description: product.description || `Pesan ${product.name} dari Ini Rasa Bakery & Hampers Premium Jakarta.`,
+    openGraph: {
+      title: `${product.name} | Ini Rasa`,
+      description: product.description || `Pesan ${product.name} dari Ini Rasa.`,
+      images: [{ url: image, width: 800, height: 800, alt: product.name }],
+      type: 'website',
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${product.name} | Ini Rasa`,
+      description: product.description || '',
+      images: [image],
+    },
+  };
+}
 
 export default async function ProductDetailPage({ params }: { params: Promise<{ id: string }> }) {
   const resolvedParams = await params;
@@ -24,12 +56,34 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
     .eq("id", productId)
     .single();
 
-  // 2. Mengambil 3 produk lain secara acak/berurutan untuk bagian "Maybe you like"
-  const { data: recommendations } = await supabase
-    .from("products")
-    .select("*")
-    .neq("id", productId) // Mengecualikan produk yang sedang dibuka
-    .limit(3);
+  // 2. Mengambil rekomendasi cerdas:
+  //    - Utamakan produk dari kategori yang SAMA (max 2 produk)
+  //    - Jika masih kurang dari 3, tambahkan dari kategori lain
+  let recommendations: any[] = [];
+
+  if (product) {
+    // Ambil dari kategori yang sama (kecuali produk saat ini), max 2
+    const { data: sameCat } = await supabase
+      .from("products")
+      .select("*")
+      .eq("category", product.category)
+      .neq("id", productId)
+      .limit(2);
+
+    recommendations = sameCat || [];
+
+    // Jika kurang dari 3, tambahkan dari kategori berbeda
+    if (recommendations.length < 3) {
+      const existingIds = [productId, ...recommendations.map((p) => p.id)];
+      const { data: otherCat } = await supabase
+        .from("products")
+        .select("*")
+        .not("id", "in", `(${existingIds.join(",")})`)
+        .limit(3 - recommendations.length);
+
+      recommendations = [...recommendations, ...(otherCat || [])];
+    }
+  }
 
   if (error) console.error("Gagal mengambil data:", error);
 
@@ -51,8 +105,29 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
   const imageIndex = (product.id - 1) % imageUrls.length;
   const finalImage = product.image_url || imageUrls[imageIndex];
 
+  // JSON-LD Structured Data untuk Google Rich Results
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'Product',
+    name: product.name,
+    description: product.description,
+    image: finalImage,
+    brand: { '@type': 'Brand', name: 'Ini Rasa' },
+    offers: {
+      '@type': 'Offer',
+      priceCurrency: 'IDR',
+      price: product.price,
+      availability: 'https://schema.org/InStock',
+      seller: { '@type': 'Organization', name: 'Ini Rasa Bakery' },
+    },
+  };
+
   return (
     <div className="min-h-screen bg-white py-12 border-t border-brand-sand/30">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Navigasi Breadcrumb */}

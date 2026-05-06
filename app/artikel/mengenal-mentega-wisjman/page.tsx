@@ -1,5 +1,25 @@
+import { Metadata } from "next";
 import Link from "next/link";
 import { ArrowLeft, Calendar, Tag, Clock } from "lucide-react";
+import ArtikelSidebar from "../../../components/ArtikelSidebar";
+
+export const metadata: Metadata = {
+  title: "Mengenal Perbedaan Mentega Wisjman dan Margarin Biasa | Ini Rasa",
+  description: "Banyak yang bertanya, apa rahasia di balik tekstur lumer Nastar Ini Rasa? Jawabannya ada pada pemilihan bahan baku yang tidak kenal kompromi.",
+  openGraph: {
+    title: "Mengenal Perbedaan Mentega Wisjman dan Margarin Biasa",
+    description: "Banyak yang bertanya, apa rahasia di balik tekstur lumer Nastar Ini Rasa? Jawabannya ada pada pemilihan bahan baku yang tidak kenal kompromi.",
+    images: [
+      {
+        url: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/Nastar%20Wisjman%20Spesial.webp",
+        width: 1200,
+        height: 630,
+        alt: "Mentega Wisjman vs Margarin",
+      }
+    ],
+    type: "article",
+  }
+};
 
 export default function ArtikelWisjman() {
   return (
@@ -29,32 +49,38 @@ export default function ArtikelWisjman() {
         </div>
       </section>
 
-      <section className="max-w-3xl mx-auto px-4 sm:px-6 mt-12">
-        <div className="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-brand-sand/30 text-lg text-brand-brown/80 leading-relaxed space-y-6">
-          <p className="font-bold text-xl text-brand-brown">
-            Banyak yang bertanya, apa rahasia di balik tekstur lumer Nastar Ini Rasa? Jawabannya ada pada pemilihan bahan baku yang tidak kenal kompromi.
-          </p>
-          <p>
-            Dalam dunia *baking*, lemak adalah kunci utama yang menentukan tekstur dan aroma kue kering. Dua jenis lemak yang paling sering digunakan adalah mentega (butter) dan margarin. Namun, tidak semua mentega diciptakan sama.
-          </p>
-          <h3 className="text-2xl font-serif font-bold text-brand-brown mt-8 mb-4">Margarin vs Mentega Asli</h3>
-          <p>
-            Margarin terbuat dari lemak nabati (tumbuhan) dan air. Sifatnya lebih padat, membuat kue lebih kokoh dan tidak mudah hancur. Namun, margarin tidak memiliki aroma harum yang khas dan meninggalkan rasa *waxy* (seperti lilin) di langit-langit mulut.
-          </p>
-          <p>
-            Mentega asli, terbuat dari lemak susu hewani (sapi). Mentega memberikan kelembutan yang luar biasa dan aroma susu yang sangat menggugah selera.
-          </p>
-          <h3 className="text-2xl font-serif font-bold text-brand-brown mt-8 mb-4">Mengapa Harus Wisjman (Wijsman)?</h3>
-          <p>
-            Wisjman adalah merek *concentrated butter* (mentega kalengan) premium dari Belanda yang sudah melegenda sejak zaman kolonial. Wisjman memiliki kandungan lemak susu yang sangat tinggi dengan kadar air yang sangat rendah.
-          </p>
-          <p>
-            Hasilnya? Nastar dan Kastengel yang dipanggang menggunakan Wisjman akan memiliki aroma harum yang tercium hingga ke luar ruangan, serta tekstur yang langsung *melt-in-the-mouth* (lumer di mulut) tanpa perlu banyak dikunyah.
-          </p>
-          <div className="bg-brand-cream/50 p-6 rounded-2xl mt-8 border-l-4 border-brand-sage">
-            <p className="italic text-brand-brown">
-              Di <strong>Ini Rasa</strong>, kami menolak menggunakan 100% margarin. Kue kering premium kami selalu menggunakan takaran mentega Wisjman yang melimpah demi menjaga kualitas dan kepuasan lidah pelanggan kami.
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 mt-12">
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
+          <div className="lg:col-span-2 bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-brand-sand/30 text-lg text-brand-brown/80 leading-relaxed space-y-6">
+            <p className="font-bold text-xl text-brand-brown">
+              Banyak yang bertanya, apa rahasia di balik tekstur lumer Nastar Ini Rasa? Jawabannya ada pada pemilihan bahan baku yang tidak kenal kompromi.
             </p>
+            <p>
+              Dalam dunia *baking*, lemak adalah kunci utama yang menentukan tekstur dan aroma kue kering. Dua jenis lemak yang paling sering digunakan adalah mentega (butter) dan margarin. Namun, tidak semua mentega diciptakan sama.
+            </p>
+            <h3 className="text-2xl font-serif font-bold text-brand-brown mt-8 mb-4">Margarin vs Mentega Asli</h3>
+            <p>
+              Margarin terbuat dari lemak nabati (tumbuhan) dan air. Sifatnya lebih padat, membuat kue lebih kokoh dan tidak mudah hancur. Namun, margarin tidak memiliki aroma harum yang khas dan meninggalkan rasa *waxy* (seperti lilin) di langit-langit mulut.
+            </p>
+            <p>
+              Mentega asli, terbuat dari lemak susu hewani (sapi). Mentega memberikan kelembutan yang luar biasa dan aroma susu yang sangat menggugah selera.
+            </p>
+            <h3 className="text-2xl font-serif font-bold text-brand-brown mt-8 mb-4">Mengapa Harus Wisjman (Wijsman)?</h3>
+            <p>
+              Wisjman adalah merek *concentrated butter* (mentega kalengan) premium dari Belanda yang sudah melegenda sejak zaman kolonial. Wisjman memiliki kandungan lemak susu yang sangat tinggi dengan kadar air yang sangat rendah.
+            </p>
+            <p>
+              Hasilnya? Nastar dan Kastengel yang dipanggang menggunakan Wisjman akan memiliki aroma harum yang tercium hingga ke luar ruangan, serta tekstur yang langsung *melt-in-the-mouth* (lumer di mulut) tanpa perlu banyak dikunyah.
+            </p>
+            <div className="bg-brand-cream/50 p-6 rounded-2xl mt-8 border-l-4 border-brand-sage">
+              <p className="italic text-brand-brown">
+                Di <strong>Ini Rasa</strong>, kami menolak menggunakan 100% margarin. Kue kering premium kami selalu menggunakan takaran mentega Wisjman yang melimpah demi menjaga kualitas dan kepuasan lidah pelanggan kami.
+              </p>
+            </div>
+          </div>
+          
+          <div className="lg:col-span-1">
+            <ArtikelSidebar currentLink="/artikel/mengenal-mentega-wisjman" />
           </div>
         </div>
       </section>

@@ -1,7 +1,6 @@
 "use client";
 
 import { createContext, useContext, useState, ReactNode } from "react";
-import toast from "react-hot-toast";
 
 type CartItem = {
   id: number;
@@ -18,6 +17,7 @@ type CartContextType = {
   increaseQuantity: (id: number) => void;
   decreaseQuantity: (id: number) => void;
   removeFromCart: (id: number) => void;
+  clearCart: () => void;
 };
 
 const CartContext = createContext<CartContextType | undefined>(undefined);
@@ -35,7 +35,6 @@ export function CartProvider({ children }: { children: ReactNode }) {
       }
       return [...prevCart, { ...product, quantity: 1 }];
     });
-    toast.success(`${product.name} berhasil ditambahkan!`);
   };
 
   // Fungsi Tambah (+)
@@ -61,10 +60,15 @@ export function CartProvider({ children }: { children: ReactNode }) {
     setCart((prevCart) => prevCart.filter((item) => item.id !== id));
   };
 
+  // Fungsi Kosongkan Keranjang
+  const clearCart = () => {
+    setCart([]);
+  };
+
   const cartCount = cart.reduce((total, item) => total + item.quantity, 0);
 
   return (
-    <CartContext.Provider value={{ cart, addToCart, cartCount, increaseQuantity, decreaseQuantity, removeFromCart }}>
+    <CartContext.Provider value={{ cart, addToCart, cartCount, increaseQuantity, decreaseQuantity, removeFromCart, clearCart }}>
       {children}
     </CartContext.Provider>
   );

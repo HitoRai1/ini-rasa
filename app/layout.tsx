@@ -7,6 +7,7 @@ import { AuthProvider } from "./context/AuthContext";
 import { WishlistProvider } from "./context/WishlistContext";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
+import Script from "next/script";
 
 export const metadata = {
   metadataBase: new URL('https://inirasa.biz.id'),
@@ -44,6 +45,25 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="id">
+      <head>
+        {/* Google Analytics */}
+        <Script
+          strategy="afterInteractive"
+          src="https://www.googletagmanager.com/gtag/js?id=G-E7EE981FZR"
+        />
+        <Script
+          id="google-analytics"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: `
+              window.dataLayer = window.dataLayer || [];
+              function gtag(){dataLayer.push(arguments);}
+              gtag('js', new Date());
+              gtag('config', 'G-E7EE981FZR');
+            `,
+          }}
+        />
+      </head>
       <body className="bg-brand-cream text-brand-brown font-sans antialiased min-h-screen flex flex-col">
         <AuthProvider>
           <WishlistProvider>

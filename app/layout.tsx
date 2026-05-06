@@ -8,6 +8,7 @@ import { WishlistProvider } from "./context/WishlistContext";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
+import PageTransition from "../components/PageTransition";
 
 export const metadata = {
   metadataBase: new URL('https://inirasa.biz.id'),
@@ -46,6 +47,9 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
+        <link rel="manifest" href="/manifest.json" />
+        <meta name="theme-color" content="#4a3b32" />
+        <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
@@ -80,8 +84,8 @@ export default function RootLayout({
                   },
                 }} 
               />
-              <main className="min-h-screen">
-                {children}
+              <main className="min-h-screen flex flex-col">
+                <PageTransition>{children}</PageTransition>
               </main>
               <Footer />
             </CartProvider>

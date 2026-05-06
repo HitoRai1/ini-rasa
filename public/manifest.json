@@ -1,0 +1,21 @@
+{
+  "name": "Ini Rasa Bakery",
+  "short_name": "Ini Rasa",
+  "description": "Bakery & Hampers Premium Jakarta dengan bahan Wisjman pilihan.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#faf9f7",
+  "theme_color": "#4a3b32",
+  "icons": [
+    {
+      "src": "/favicon.ico",
+      "sizes": "192x192",
+      "type": "image/x-icon"
+    },
+    {
+      "src": "/favicon.ico",
+      "sizes": "512x512",
+      "type": "image/x-icon"
+    }
+  ]
+}

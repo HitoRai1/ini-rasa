@@ -1,5 +1,6 @@
 import { supabase } from "../../lib/supabase";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import AddToCartBigButton from "../../../components/AddToCartBigButton";
 import ImageModal from "../../../components/ImageModal";
@@ -182,10 +183,12 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
                   
                   {/* Foto Produk Rekomendasi */}
                   <div className="aspect-square bg-brand-sand/10 relative overflow-hidden">
-                    <img 
+                    <Image 
                       src={recImage} 
                       alt={rec.name} 
-                      className="w-full h-full object-cover group-hover:scale-105 transition duration-500" 
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition duration-500" 
                     />
                   </div>
 

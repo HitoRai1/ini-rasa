@@ -22,7 +22,7 @@ const imageUrls = [
 ];
 
 type Props = {
-  searchParams: Promise<{ category?: string }>
+  searchParams: Promise<{ category?: string; q?: string }>
 };
 
 export default async function MenuPage({ searchParams }: Props) {

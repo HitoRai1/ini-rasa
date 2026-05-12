@@ -8,7 +8,6 @@ import { WishlistProvider } from "./context/WishlistContext";
 import { Toaster } from "react-hot-toast";
 import { Analytics } from "@vercel/analytics/next";
 import Script from "next/script";
-import PageTransition from "../components/PageTransition";
 
 export const metadata = {
   metadataBase: new URL('https://inirasa.biz.id'),
@@ -85,7 +84,7 @@ export default function RootLayout({
                 }} 
               />
               <main className="min-h-screen flex flex-col">
-                <PageTransition>{children}</PageTransition>
+                {children}
               </main>
               <Footer />
             </CartProvider>

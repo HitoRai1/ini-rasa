@@ -1,7 +1,6 @@
 import { supabase } from "../lib/supabase";
 import AddToCartButton from "../../components/AddToCartButton";
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft } from "lucide-react";
 import SearchBar from "../../components/SearchBar";
 import WishlistButton from "../../components/WishlistButton";
@@ -121,14 +120,8 @@ export default async function MenuPage({ searchParams }: Props) {
                   <div key={product.id} className="bg-white rounded-2xl overflow-hidden shadow-sm border border-brand-sand/30 hover:shadow-md transition group flex flex-col">
                     <div className="aspect-square bg-brand-sand/20 relative flex items-center justify-center overflow-hidden">
                       <WishlistButton product={{...product, image_url: finalImage}} />
-                      <Link href={`/menu/${product.id}`} className="w-full h-full relative">
-                        <Image 
-                          src={finalImage} 
-                          alt={product.name} 
-                          fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                          className="object-cover group-hover:scale-105 transition duration-500" 
-                        />
+                      <Link href={`/menu/${product.id}`} className="w-full h-full">
+                        <img src={finalImage} alt={product.name} className="w-full h-full object-cover group-hover:scale-105 transition duration-500" />
                       </Link>
                     </div>
 

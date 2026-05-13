@@ -46,9 +46,6 @@ export default function RootLayout({
   return (
     <html lang="id">
       <head>
-        <link rel="manifest" href="/manifest.json" />
-        <meta name="theme-color" content="#4a3b32" />
-        <link rel="apple-touch-icon" href="/favicon.ico" />
         {/* Google Analytics */}
         <Script
           strategy="afterInteractive"
@@ -83,7 +80,7 @@ export default function RootLayout({
                   },
                 }} 
               />
-              <main className="min-h-screen flex flex-col">
+              <main className="min-h-screen">
                 {children}
               </main>
               <Footer />

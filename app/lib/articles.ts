@@ -89,4 +89,14 @@ export const articles = [
     image: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/medina%20royal.webp",
     featured: false,
   },
+  {
+    id: 10,
+    title: "5 Rekomendasi Bisnis Lokal Sahabat Ini Rasa yang Wajib Dikunjungi",
+    link: "/artikel/rekomendasi-bisnis-sahabat",
+    excerpt: "Dukung bisnis lokal bersama Ini Rasa! Mulai dari kafe Kicau Cafe, layanan kesehatan Nihao Dokter, hingga makan malam Italia di Zaffrino.",
+    date: "13 Mei 2026",
+    category: "Komunitas",
+    image: "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/trio%20cake.webp",
+    featured: false,
+  },
 ];

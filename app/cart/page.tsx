@@ -1,7 +1,6 @@
 "use client";
 
 import Link from "next/link";
-import Image from "next/image";
 import { ArrowLeft, Trash2, Loader2, CheckCircle2 } from "lucide-react";
 import { useCart } from "../../app/context/CartContext";
 import { useState, useEffect } from "react";
@@ -113,14 +112,8 @@ export default function CartPage() {
                 <div key={item.id} className="flex items-center gap-4 sm:gap-6 border-b border-brand-sand/30 pb-6 last:border-0 last:pb-0">
                   
                   {/* Foto Produk */}
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 bg-brand-sand/20 rounded-xl overflow-hidden relative">
-                    <Image 
-                      src={item.image_url} 
-                      alt={item.name} 
-                      fill
-                      sizes="(max-width: 768px) 80px, 96px"
-                      className="object-cover" 
-                    />
+                  <div className="w-20 h-20 sm:w-24 sm:h-24 flex-shrink-0 bg-brand-sand/20 rounded-xl overflow-hidden">
+                    <img src={item.image_url} alt={item.name} className="w-full h-full object-cover" />
                   </div>
                   
                   {/* Info Produk dengan Fitur Tambah Kurang */}

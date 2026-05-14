@@ -88,6 +88,80 @@ export default function LocationPage() {
           
         </div>
 
+        {/* Cabang Kami Section */}
+        <div className="mt-20">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-serif font-bold text-brand-brown mb-4">Cabang Kami</h2>
+            <p className="text-brand-brown/70 max-w-2xl mx-auto text-lg">
+              Kini Ini Rasa hadir lebih dekat dengan Anda. Kunjungi cabang terdekat di kota Anda.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {/* Cabang 1 */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand/30 hover:border-brand-sage transition duration-300">
+              <h3 className="font-bold text-xl text-brand-brown mb-3">Jakarta Selatan (Kemang)</h3>
+              <p className="text-brand-brown/70 text-sm mb-4 leading-relaxed">Jl. Kemang Raya No. 45, Bangka, Kec. Mampang Prapatan, Jakarta Selatan 12730</p>
+              <div className="flex items-center gap-2 text-sm text-brand-brown/80">
+                <Phone className="w-4 h-4 text-brand-sage" /> 0851-8607-4312
+              </div>
+            </div>
+            
+            {/* Cabang 2 */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand/30 hover:border-brand-sage transition duration-300">
+              <h3 className="font-bold text-xl text-brand-brown mb-3">Jakarta Pusat (Menteng)</h3>
+              <p className="text-brand-brown/70 text-sm mb-4 leading-relaxed">Jl. HOS. Cokroaminoto No. 88, Menteng, Kec. Menteng, Jakarta Pusat 10310</p>
+              <div className="flex items-center gap-2 text-sm text-brand-brown/80">
+                <Phone className="w-4 h-4 text-brand-sage" /> 0851-8607-4313
+              </div>
+            </div>
+
+            {/* Cabang 3 */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand/30 hover:border-brand-sage transition duration-300">
+              <h3 className="font-bold text-xl text-brand-brown mb-3">Tangerang (BSD City)</h3>
+              <p className="text-brand-brown/70 text-sm mb-4 leading-relaxed">Ruko BSD Sektor VII, Jl. Pahlawan Seribu, Lengkong Wetan, Serpong, Tangerang Selatan 15322</p>
+              <div className="flex items-center gap-2 text-sm text-brand-brown/80">
+                <Phone className="w-4 h-4 text-brand-sage" /> 0851-8607-4314
+              </div>
+            </div>
+
+            {/* Cabang 4 */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand/30 hover:border-brand-sage transition duration-300">
+              <h3 className="font-bold text-xl text-brand-brown mb-3">Bekasi (Summarecon)</h3>
+              <p className="text-brand-brown/70 text-sm mb-4 leading-relaxed">Ruko Emerald Commercial Blok UB No. 11, Summarecon, Bekasi Utara 17142</p>
+              <div className="flex items-center gap-2 text-sm text-brand-brown/80">
+                <Phone className="w-4 h-4 text-brand-sage" /> 0851-8607-4315
+              </div>
+            </div>
+
+            {/* Cabang 5 */}
+            <div className="bg-white p-6 rounded-2xl shadow-sm border border-brand-sand/30 hover:border-brand-sage transition duration-300">
+              <h3 className="font-bold text-xl text-brand-brown mb-3">Depok (Margonda)</h3>
+              <p className="text-brand-brown/70 text-sm mb-4 leading-relaxed">Jl. Margonda Raya No. 350, Kemiri Muka, Kec. Beji, Kota Depok 16424</p>
+              <div className="flex items-center gap-2 text-sm text-brand-brown/80">
+                <Phone className="w-4 h-4 text-brand-sage" /> 0851-8607-4316
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* B2B Partnership Section */}
+        <div className="mt-16 bg-brand-cream border border-brand-sand/40 rounded-3xl p-8 md:p-12 text-center shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-2 bg-brand-sage"></div>
+          <h2 className="text-3xl font-serif font-bold text-brand-brown mb-4">Kerjasama B2B & Corporate</h2>
+          <p className="text-brand-brown/80 max-w-2xl mx-auto mb-8 text-lg">
+            Kami terbuka untuk peluang kemitraan bisnis. Dapatkan penawaran khusus untuk pemesanan korporat, reseller, atau kolaborasi event Anda.
+          </p>
+          <a 
+            href="https://drive.google.com/file/d/1s7YKgPuMJH6B9z53EgQgL-nJtjrnfjbi/view?usp=sharing" 
+            target="_blank" 
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-brand-brown text-white px-8 py-4 rounded-full font-bold hover:bg-brand-sage hover:text-brand-brown transition duration-300 shadow-md"
+          >
+            Download Proposal B2B (PDF)
+          </a>
+        </div>
+
       </div>
     </div>
   );

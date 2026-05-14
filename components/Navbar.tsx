@@ -2,7 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { ShoppingCart, Home, Store, BookOpen, Info, Menu, X, User, Heart } from "lucide-react";
+import { ShoppingCart, Home, Store, BookOpen, Info, Menu, X, User, Heart, MapPin } from "lucide-react";
 import Logo from "./Logo"; 
 import { useCart } from "../app/context/CartContext";
 import { useAuth } from "../app/context/AuthContext";
@@ -26,6 +26,7 @@ export default function Navbar() {
     { name: "Home", href: "/", icon: Home },
     { name: "Menu", href: "/menu", icon: Store },
     { name: "Artikel", href: "/artikel", icon: BookOpen },
+    { name: "Location", href: "/location", icon: MapPin },
     { name: "About Us", href: "/about", icon: Info },
   ];
 

@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { ArrowRight, Star, Clock, ShieldCheck, ThumbsUp } from "lucide-react";
+import PromoCarousel from "../components/PromoCarousel";
 
 export default function HomePage() {
   return (
@@ -40,32 +41,7 @@ export default function HomePage() {
          </div>
       </section>
 
-      {/* BRAND STORY SINGKAT */}
-      <section className="py-24 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <div className="order-2 lg:order-1 relative">
-             <div className="absolute inset-0 bg-brand-sand/30 rounded-3xl transform -translate-x-4 translate-y-4 -z-10"></div>
-             <div className="aspect-square rounded-3xl overflow-hidden shadow-xl relative">
-                <img src="https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/shafa.webp" alt="Ini Rasa Bakery" className="w-full h-full object-cover" />
-             </div>
-             <div className="absolute -bottom-6 -right-6 bg-white p-6 rounded-2xl shadow-xl hidden md:block border border-brand-sand/30">
-                <div className="flex gap-1 text-yellow-400 mb-2">
-                   <Star fill="currentColor" className="w-5 h-5"/><Star fill="currentColor" className="w-5 h-5"/><Star fill="currentColor" className="w-5 h-5"/><Star fill="currentColor" className="w-5 h-5"/><Star fill="currentColor" className="w-5 h-5"/>
-                </div>
-                <p className="font-bold text-brand-brown">4.9/5 Rating Pelanggan</p>
-             </div>
-          </div>
-          <div className="order-1 lg:order-2 space-y-6">
-            <p className="text-sm font-bold text-brand-sage uppercase tracking-widest">Tentang Kami</p>
-            <h2 className="text-3xl md:text-5xl font-serif font-bold text-brand-brown leading-tight">Toko Kue Premium Jakarta Pilihan Keluarga.</h2>
-            <p className="text-brand-brown/80 leading-relaxed text-lg">Sebagai <strong>toko kue premium Jakarta</strong>, Ini Rasa berkomitmen menghadirkan pengalaman kuliner yang tak terlupakan. Berawal dari dapur kecil yang hangat, kami menyajikan aneka kue tart, cookies, dan hampers elegan yang memanjakan lidah.</p>
-            <p className="text-brand-brown/80 leading-relaxed text-lg">Setiap kreasi kami menggunakan mentega asli kualitas ekspor dan bahan baku pilihan. Sangat sempurna untuk menemani momen spesial, dari perayaan ulang tahun hingga hadiah istimewa untuk kolega bisnis Anda.</p>
-            <Link href="/about" className="inline-flex items-center gap-2 text-brand-brown font-bold hover:text-brand-sage transition border-b-2 border-brand-brown hover:border-brand-sage pb-1 mt-4">
-              Kenali Kami Lebih Jauh <ArrowRight className="w-4 h-4" />
-            </Link>
-          </div>
-        </div>
-      </section>
+      <PromoCarousel />
 
       {/* TESTIMONI PELANGGAN */}
       <section className="py-24 bg-brand-cream/50 border-t border-brand-sand/30">

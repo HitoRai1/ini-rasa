@@ -4,6 +4,7 @@ import { ArrowLeft } from "lucide-react";
 import AddToCartBigButton from "../../../components/AddToCartBigButton";
 import ImageModal from "../../../components/ImageModal";
 import type { Metadata } from "next";
+import { productDetails } from "../../lib/productDetails";
 
 const imageUrls = [
   "https://dwxnfjbdbvulzpzenffk.supabase.co/storage/v1/object/public/ini-rasa/shafa.webp", 
@@ -153,9 +154,101 @@ export default async function ProductDetailPage({ params }: { params: Promise<{ 
 
             <div className="border-y border-brand-sand/50 py-8">
               <h3 className="font-bold text-brand-brown text-lg mb-4">Informasi Produk</h3>
-              <p className="text-brand-brown/80 leading-relaxed text-base">
-                {product.description}
-              </p>
+              
+              {(() => {
+                const detailedProduct = productDetails[product.name];
+                
+                if (detailedProduct) {
+                  return (
+                    <div className="space-y-6">
+                      <p className="text-brand-brown/80 leading-relaxed text-base">
+                        {detailedProduct.description}
+                      </p>
+                      <div>
+                        <h4 className="font-bold text-brand-brown mb-2">{detailedProduct.compositionLabel || "Komposisi Utama:"}</h4>
+                        {Array.isArray(detailedProduct.composition) ? (
+                          <ul className="list-disc pl-5 text-sm text-brand-brown/80 space-y-1">
+                            {detailedProduct.composition.map((item: string, i: number) => <li key={i}>{item}</li>)}
+                          </ul>
+                        ) : (
+                          <p className="text-brand-brown/80 leading-relaxed text-sm">{detailedProduct.composition}</p>
+                        )}
+                      </div>
+                      <div className="pt-4 border-t border-brand-sand/30">
+                        <h4 className="font-bold text-brand-brown mb-3">Spesifikasi</h4>
+                        <ul className="text-sm text-brand-brown/80 space-y-2">
+                          {detailedProduct.specs.map((spec: any, i: number) => (
+                            <li key={i} className="flex flex-col sm:flex-row sm:justify-between border-b border-brand-sand/20 pb-1.5">
+                              <span className="font-medium text-brand-brown mb-1 sm:mb-0 sm:w-1/3">{spec.label}</span>
+                              <span className="sm:w-2/3 sm:text-right">{spec.value}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                  );
+                }
+
+                // Fallback to old generic layout if detail is not provided
+                return (
+                  <>
+                    <p className="text-brand-brown/80 leading-relaxed text-base mb-6">
+                      {product.description}
+                    </p>
+                    
+                    <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-6 pt-6 border-t border-brand-sand/30">
+                      <div>
+                        <h4 className="font-bold text-brand-brown mb-3">Serving Sizes</h4>
+                        <ul className="text-sm text-brand-brown/80 space-y-1.5 list-disc pl-5">
+                          {product.category?.toLowerCase() === 'cake' ? (
+                            <>
+                              <li>Diameter 16 cm: 4-6 slices</li>
+                              <li>Diameter 20 cm: 8-10 slices</li>
+                              <li>Diameter 24 cm: 12-15 slices</li>
+                            </>
+                          ) : product.category?.toLowerCase() === 'cookies' ? (
+                            <>
+                              <li>Small Jar: 250g (± 30 pcs)</li>
+                              <li>Medium Jar: 500g (± 60 pcs)</li>
+                              <li>Large Jar: 750g (± 90 pcs)</li>
+                            </>
+                          ) : (
+                            <>
+                              <li>Standard Box: 3 Items</li>
+                              <li>Premium Box: 5 Items</li>
+                              <li>Signature Box: 7 Items</li>
+                            </>
+                          )}
+                        </ul>
+                      </div>
+                      <div>
+                        <h4 className="font-bold text-brand-brown mb-3">Nutrition Facts</h4>
+                        <ul className="text-sm text-brand-brown/80 space-y-1.5">
+                          {product.category?.toLowerCase() === 'cake' ? (
+                            <>
+                              <li className="flex justify-between border-b border-brand-sand/20 pb-1"><span>Total energy (kcal)</span> <span className="font-medium">2450</span></li>
+                              <li className="flex justify-between border-b border-brand-sand/20 pb-1"><span>Protein (gr)</span> <span className="font-medium">45.5</span></li>
+                              <li className="flex justify-between border-b border-brand-sand/20 pb-1"><span>Fat (gr)</span> <span className="font-medium">120.2</span></li>
+                              <li className="flex justify-between pb-1"><span>Carbo (gr)</span> <span className="font-medium">280.0</span></li>
+                            </>
+                          ) : product.category?.toLowerCase() === 'cookies' ? (
+                            <>
+                              <li className="flex justify-between border-b border-brand-sand/20 pb-1"><span>Total energy (kcal)</span> <span className="font-medium">1580</span></li>
+                              <li className="flex justify-between border-b border-brand-sand/20 pb-1"><span>Protein (gr)</span> <span className="font-medium">25.0</span></li>
+                              <li className="flex justify-between border-b border-brand-sand/20 pb-1"><span>Fat (gr)</span> <span className="font-medium">85.4</span></li>
+                              <li className="flex justify-between pb-1"><span>Carbo (gr)</span> <span className="font-medium">195.2</span></li>
+                            </>
+                          ) : (
+                            <li className="text-brand-brown/70 italic text-xs leading-relaxed mt-2">
+                              *Nilai gizi bervariasi tergantung pada kombinasi produk dalam setiap paket hampers. Silakan merujuk pada label masing-masing kemasan.
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  </>
+                );
+              })()}
             </div>
 
             <div className="pt-4 space-y-4">
